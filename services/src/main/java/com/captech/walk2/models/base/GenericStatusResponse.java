@@ -1,6 +1,6 @@
 package com.captech.walk2.models.base;
 
-public class GenericStatusResponse extends Response {
+public class GenericStatusResponse extends BaseResponse {
 
 	// JAXB requires a default constructor
 	private GenericStatusResponse() {  };  

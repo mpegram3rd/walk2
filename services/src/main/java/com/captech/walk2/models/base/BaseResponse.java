@@ -4,14 +4,14 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Response {
+public class BaseResponse {
 
 	private Status status;
 	private String additionalStatus;
 
-	protected Response() { }; // jaxb is unhappy without a default constructor
+	protected BaseResponse() { }; // jaxb is unhappy without a default constructor
 
-	protected Response(BaseBuilder builder) {
+	protected BaseResponse(BaseBuilder builder) {
 		status = builder.status;
 		additionalStatus = builder.additionalStatus;
 	}
@@ -45,7 +45,7 @@ public class Response {
 			this.additionalStatus = additionalStatus;
 		}
 
-		public abstract Response build();
+		public abstract BaseResponse build();
 	}
 
 }
