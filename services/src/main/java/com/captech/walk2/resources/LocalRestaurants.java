@@ -36,6 +36,8 @@ public class LocalRestaurants extends BaseResource {
 			@PathParam("longitude") String longitude,
 			@Context HttpServletRequest req, @Context HttpServletResponse resp) throws IOException {
 		
+		System.out.println("Find matches with lat: " + latitude + " and long: " + longitude);
+		
 		return null;
 	}	
 
