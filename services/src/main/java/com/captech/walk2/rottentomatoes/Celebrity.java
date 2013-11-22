@@ -4,7 +4,14 @@ public class Celebrity {
 
 	private String name;
 	private String movieTitle;
+	private String movieId;
 	
+	public String getMovieId() {
+		return movieId;
+	}
+	public void setMovieId(String movieId) {
+		this.movieId = movieId;
+	}
 	public Celebrity() {
 		name = "";
 		movieTitle = "";

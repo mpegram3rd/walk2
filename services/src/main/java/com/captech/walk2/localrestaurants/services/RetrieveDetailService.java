@@ -31,7 +31,7 @@ public class RetrieveDetailService {
 		RowResponse facts =  factual.fetchRow("restaurants-us", id);
 		RestaurantDetail detail = factualTransformer.transform(facts);
 		Celebrity celeb = tomatoeSource.getCeleb();
-		String reviewText = tomatoeSource.createReview();
+		String reviewText = tomatoeSource.createReview(celeb.getMovieId());
 		Review review = new Review();
 		review.setReviewer(celeb.getName() + " (" + celeb.getMovieTitle() +")");
 		review.setComment(reviewText);

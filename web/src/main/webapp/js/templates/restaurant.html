@@ -8,8 +8,12 @@
 	</div>
 </div>
 <!-- reviews go here. -->
+<div class="row">
 <% _.each(obj.reviews, function (review) { %>
+   <div class="col-md-4">
 	<%= review.comment %> <br/>
 	&nbsp;&nbsp;&nbsp;&nbsp;- <%= review.reviewer %> <br/>
+	</div>
 <% }); %>
+</div>
 

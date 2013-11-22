@@ -33,6 +33,7 @@ public class RottenMoviesToCelebrityTransformer implements Transformer<JSONArray
 					Celebrity celeb = new Celebrity();
 					celeb.setName(castMember.getString("name"));
 					celeb.setMovieTitle(aMovie.getString("title"));
+					celeb.setMovieId(aMovie.getString("id"));
 					
 					celebs.add(celeb);
 				}
