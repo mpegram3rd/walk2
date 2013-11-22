@@ -44,6 +44,29 @@ public class BaseResource {
 	}
 	
 	/**
+	 * A simpler, cleaner response generator.
+	 * 
+	 * @param entity
+	 * @param type
+	 * @param statusValue
+	 * @return
+	 */
+	protected Response createSimpleResponse(Object entity, String type, Status statusValue)  {
+		
+		ResponseBuilder builder = null;
+		Response response = null;
+		String mediaType = (XML_TYPE.equalsIgnoreCase(type) ? MediaType.APPLICATION_XML: MediaType.APPLICATION_JSON);
+		int statusCode = (statusValue != null ? statusValue.getCode() : Status.SYSTEM_ERROR.getCode());
+		
+		if (entity == null) 
+			response = Response.status(statusCode).type(mediaType).build();
+		else
+			response = Response.status(statusCode).type(mediaType).entity(entity).build();
+		
+		return response;
+	}
+	
+	/**
 	 * Convenience method will build default response type (JSON)
 	 * @param resp
 	 * @return
