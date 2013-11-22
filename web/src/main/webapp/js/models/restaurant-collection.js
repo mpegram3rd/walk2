@@ -12,7 +12,7 @@ define([
 		model : Restaurant,
 		
 		url: function () {
-			return '/services/v1/restaurants/list/' + this.latitude + '/' + this.longitude;
+			return '/services/v1/restaurant/list/' + this.latitude + '/' + this.longitude;
 		}
 		
 	});

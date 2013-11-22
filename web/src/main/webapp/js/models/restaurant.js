@@ -11,7 +11,7 @@ define([
 		},
 		
 		url: function () {
-			return '/services/v1/restaurants/' + this.id;
+			return '/services/v1/restaurant/' + this.id;
 		}
 		
 	});
