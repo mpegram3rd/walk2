@@ -1,7 +1,25 @@
 <div class="row">
 	<div class="col-md-12">
 		<span class="sr-only">Location Search</span>
-		<a href="#findLoc"><img src="img/compass-mid.png" class="img-responsive img-centered"/></a>
+		<a href="#findLoc" onClick="return showSearching()"><img src="img/compass-mid.png" class="img-responsive img-centered"/></a>
 	</div>
 </div>
+<div class="row">
+    <div class="col-md-4"></div>
+	<div class="col-md-4">
+		<div id="loading" class="alert alert-info hide">Searching...</div>
+   <% if(! _.isUndefined(obj) ) { %>
+        <div id="errormsg" class="alert alert-danger"><%= statusMsg %></div>
+    <% } %> 
+    </div>    
+    <div class="col-md-4"></div>
+</div>
+<script>
+function showSearching() {
+	$('#errormsg').hide();
+	$('#loading').removeClass('hide');
+	return true;
+}
+</script>
+
 

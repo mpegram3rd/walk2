@@ -11,6 +11,7 @@ define([
 			accuracy: ""
 		},
 		
+		
 	});
 		
 	return Location;

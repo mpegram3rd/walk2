@@ -35,23 +35,20 @@ define([
 			var result = this.headings[0];
 			
 			if (degrees)
-				result = this.headings[Math.floor(degrees / 45)];
+				result = this.headings[Math.floor(degrees / 45) % 8];
 			
 			return result;
 		}, 
 		
-		success : function(position) {
-			$('#status').html('Found!');
-			$('#lat').html(position.coords.latitude);
-			$('#long').html(position.coords.longitude);
-			if (position.coords.heading)
-				$('#heading').html(this.cardinalDirection(position.coords.heading) + " (" + position.coords.heading + ")");
-			$('#accuracy').html(position.coords.accuracy);
+		errorMsg: function (error) {
+			var result = "Unknown Error";
+			if (error != null && this.errors[error.code]) {
+				result = this.errors[error.code];
+			}
+			
+			return result;
 		},
 		
-		error : function (error) { 
-			$('#status').html("Error: " + Geo.errors[error.code] + " - Internal Msg: " +  error.message);
-		}
 	};
 	
 //	var init = function() {

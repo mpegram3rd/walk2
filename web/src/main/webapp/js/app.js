@@ -27,23 +27,36 @@ define([
 		findLoc: function () {
 			var self = this;
 			Geo.fetch(function(position) {
-				self.loadSuccess(position);
-			}, Geo.error);		
-			
+				self.locationSuccess(position);
+			}, self.locationError);							
 		},
 		
 		
-		loadSuccess: function( position ) {
+		locationSuccess: function( position ) {
+			console.log("Location success");
 			require(['views/locationview', 'models/location'], function(LocationView, Location) {
 				var model = new Location({'latitude' : position.coords.latitude,
-										  'longitude' : position.coords.longitude,
-										  'heading' : Geo.cardinalDirection(position.coords.heading),
-										  'accuracy' : position.coords.accuracy });
-				
-				
+					  'longitude' : position.coords.longitude,
+					  'heading' : Geo.cardinalDirection(position.coords.heading),
+					  'accuracy' : position.coords.accuracy });
+
 				var view = new LocationView({ model: model} );
 				$('#content').html(view.render().el);
 			});
+		},
+		
+		locationError: function (error) {
+			var self = this;
+			console.log("Location fails");
+			require(['views/homeview'], function(HomeView) {
+				var ModelProto = Backbone.Model.extend({});
+				
+				var view = new HomeView({ 
+								model: new ModelProto({statusMsg : Geo.errorMsg(error)})
+				});
+				$('#content').html(view.render().el);
+				
+			});			
 		}
 	});
 	
