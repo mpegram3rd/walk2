@@ -8,6 +8,10 @@ define([
 			name: "",
 			distance: 0.0,
 			rating: 0,
+			streetAddress: "",
+			locality: "",
+			state: "",
+			postalCode: "",
 		},
 		
 		url: function () {

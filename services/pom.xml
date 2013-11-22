@@ -29,13 +29,7 @@
 	  		<artifactId>factual-java-driver</artifactId>
 	  		<version>1.8.2</version>
 	  	</dependency>
-	
-		 <dependency>
-			<groupId>org.json</groupId>
-			<artifactId>json</artifactId>
-			<version>LATEST</version>
-		  </dependency>
-		  
+	  	
   		<!-- Spring Dependencies -->
 		<dependency>
 			<groupId>org.springframework</groupId>
