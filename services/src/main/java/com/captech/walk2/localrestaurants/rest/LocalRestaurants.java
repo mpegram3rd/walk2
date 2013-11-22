@@ -21,7 +21,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.captech.walk2.base.BaseResource;
+import com.captech.walk2.base.models.Status;
 import com.captech.walk2.localrestaurants.models.LocalRestaurantsResponse;
+import com.captech.walk2.localrestaurants.models.RestaurantDetail;
+import com.captech.walk2.localrestaurants.services.RetrieveDetailService;
 import com.captech.walk2.localrestaurants.services.RetrieveListService;
 
 /**
@@ -37,6 +40,9 @@ public class LocalRestaurants extends BaseResource {
 	
 	@Autowired
 	private RetrieveListService retrieveListSvc;
+	
+	@Autowired
+	private RetrieveDetailService detailSvc;
 	
 	
 	@GET @Path("/list/{latitude}/{longitude}")
@@ -62,7 +68,17 @@ public class LocalRestaurants extends BaseResource {
 		
 		System.out.println("Find a single restaurant with id: " + id);
 		
-		return null;
+		RestaurantDetail detail = null;
+		Status status = null;
+		try {
+			detail = detailSvc.get(id);
+			status = Status.OK;
+		}
+		catch (Exception ex) {
+			status = Status.NO_DATA_FOUND;
+		}
+		
+		return this.createSimpleResponse(detail, type, status);
 	}	
 
 
