@@ -35,7 +35,6 @@ define([
 		
 		locationSuccess: function( position ) {
 			var self = this;
-			
 			require(['views/restaurant-list-view', 'models/restaurant-collection'], function(RestaurantsView, Restaurants) {
 				var restaurants = new Restaurants([], {'latitude'  : position.coords.latitude,
 					                             'longitude' : position.coords.longitude
