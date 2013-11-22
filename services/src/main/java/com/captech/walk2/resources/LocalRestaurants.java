@@ -39,6 +39,19 @@ public class LocalRestaurants extends BaseResource {
 		System.out.println("Find matches with lat: " + latitude + " and long: " + longitude);
 		
 		return null;
+	}
+	
+	@GET @Path("/{id}")
+	@Produces(value={"application/json", "application/xml"})
+	public Response get(
+			@QueryParam(value="type") @DefaultValue(BaseResource.JSON_TYPE) String type,
+			@PathParam("id") String id,
+			@Context HttpServletRequest req, @Context HttpServletResponse resp) throws IOException {
+		
+		System.out.println("Find a single restaurant with id: " + id);
+		
+		return null;
 	}	
+
 
 }

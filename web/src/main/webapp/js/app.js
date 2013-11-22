@@ -7,9 +7,10 @@ define([
 	
 	var App = Backbone.Router.extend({
 		routes: {
-			"" 							: "home",
-			"findLoc"					: "findLoc",
-			"details/:resourceid"		: "details"
+			"" 								: "home",
+			"locate"						: "findLoc",
+//			"restaurants/:lat/:longitude"	: "restaurantList",
+			"details/:resourceid"			: "details"
 		},
 		
 		initialize: function() {
@@ -34,14 +35,25 @@ define([
 		
 		locationSuccess: function( position ) {
 			console.log("Location success");
-			require(['views/locationview', 'models/location'], function(LocationView, Location) {
-				var model = new Location({'latitude' : position.coords.latitude,
-					  'longitude' : position.coords.longitude,
-					  'heading' : Geo.cardinalDirection(position.coords.heading),
-					  'accuracy' : position.coords.accuracy });
-
-				var view = new LocationView({ model: model} );
-				$('#content').html(view.render().el);
+			var self = this;
+//			require(['views/locationview', 'models/location'], function(LocationView, Location) {
+//				var model = new Location({'latitude' : position.coords.latitude,
+//					  'longitude' : position.coords.longitude,
+//					  'heading' : Geo.cardinalDirection(position.coords.heading),
+//					  'accuracy' : position.coords.accuracy });
+//
+//				var view = new LocationView({ model: model} );
+				
+			require(['views/restaurant-list-view', 'models/restaurant-collection'], function(RestaurantsView, Restaurants) {
+				var collection = new Restaurants([], {'latitude'  : position.coords.latitude,
+					                             'longitude' : position.coords.longitude
+				});
+				collection.fetch();
+				collection.each(function(restaurant) {
+					  console.log("Got 1");
+				});
+//				$('#content').html(view.render().el);
+				console.log("Finished iterating");
 			});
 		},
 		
@@ -57,8 +69,9 @@ define([
 				$('#content').html(view.render().el);
 				
 			});			
-		}
-	});
+		},
+		
+	});	
 	
 	var initialize = function() {
 		console.log("Initializing app");

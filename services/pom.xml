@@ -13,7 +13,7 @@
   <description>Walk2 Application Service backend</description>
   <packaging>war</packaging>
 	<build>
-		<finalName>opportunity-rs</finalName>
+		<finalName>services</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
