@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- config.xml -->
+<configuration>
+  <override>
+      <env config-at="env"/>
+      <properties fileName="${env.CONFIG_BASE}/app.properties">
+        <reloadingStrategy refreshDelay="1000"
+                config-class="org.apache.commons.configuration.reloading.FileChangedReloadingStrategy"/>
+      </properties>
+  </override>
+</configuration>
