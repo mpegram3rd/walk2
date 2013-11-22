@@ -14,7 +14,7 @@ public class FactsToRestaurantDetailTransformer extends FactualTransformerHelper
                                                implements Transformer<RowResponse, RestaurantDetail> {
 	
 	private static final String [] priceLabels = new String[] { "Cheap", "Reasonable", "Moderate", "Expensive", "Ouch!" };
-
+	
 	@Override
 	public RestaurantDetail transform(RowResponse facts) {
 		
@@ -40,11 +40,6 @@ public class FactsToRestaurantDetailTransformer extends FactualTransformerHelper
 			
 			detail.setLatitude(getDouble(factMap, "latitude"));
 			detail.setLongitude(getDouble(factMap, "longitude"));
-			
-			Review review = new Review();
-			review.setComment("I laughed, I cried, it became a part of me");
-			review.setReviewer("Angelina Jolie");
-			detail.getReviews().add (review);
 			
 		}
 		

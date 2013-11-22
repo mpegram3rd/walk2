@@ -9,6 +9,7 @@
 </div>
 <!-- reviews go here. -->
 <% _.each(obj.reviews, function (review) { %>
-	<%= review.comment %> - <%= review.reviewer %> <br/>
+	<%= review.comment %> <br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;- <%= review.reviewer %> <br/>
 <% }); %>
 
