@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import com.captech.walk2.base.models.Status;
 import com.captech.walk2.localrestaurants.models.LocalRestaurantsResponse;
 import com.captech.walk2.localrestaurants.models.Restaurant;
+import com.captech.walk2.localrestaurants.transformers.FactsToRestaurantTransformer;
 import com.captech.walk2.utils.FactualFactory;
 import com.factual.driver.Circle;
 import com.factual.driver.Factual;
@@ -27,6 +28,9 @@ public class RetrieveListService {
 	@Autowired
 	private FactualFactory factory;
 	
+	@Autowired
+	private FactsToRestaurantTransformer transformer;
+	
 	public LocalRestaurantsResponse find(double latitude, double longitude, int radiusMeters) {
 		
 		LocalRestaurantsResponse response = null;
@@ -39,20 +43,10 @@ public class RetrieveListService {
 				
 				// TODO This is a pretty sketchy way to parse.. need to clean up.
 				for (Map<String, Object> factMap: facts.getData()) {
-					Restaurant restaurant = new Restaurant();
-					restaurant.setId((String)factMap.get("factual_id"));
-					restaurant.setName((String)factMap.get("name"));
-
 					
-					Object distance = factMap.get("$distance");
-					if (distance != null)
-						restaurant.setDistance(Double.parseDouble(distance.toString()));
-					
-					Object rating = factMap.get("rating");
-					if (rating != null)
-						restaurant.setRating(Double.parseDouble(rating.toString()));
-					
-					builder.restaurant(restaurant);
+					Restaurant restaurant = transformer.transform(factMap);
+					if (restaurant != null)
+							builder.restaurant(restaurant);
 				}
 				response = builder.build();
 			}
