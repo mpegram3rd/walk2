@@ -1,4 +1,4 @@
-package com.captech.walk2.models.base;
+package com.captech.walk2.base.models;
 
 public class GenericStatusResponse extends BaseResponse {
 

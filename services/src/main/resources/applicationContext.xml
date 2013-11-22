@@ -9,4 +9,14 @@
     <context:annotation-config />
     <context:component-scan base-package="com.captech.walk2" />
 
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" />
+	
+    <!-- Using this custom bean to externalize all configuration.  -->
+    <bean id="configurationFactory" class="com.captech.walk2.utils.CommonsConfigurationCompositeFactory" >
+    	<property name="configFile" value="${CONFIG_BASE}/commons-config.xml" />
+    </bean>
+    
+    <bean id="configuration" class="org.apache.commons.configuration.Configuration" 
+          factory-bean="configurationFactory" factory-method="getConfig" />
+          
 </beans>

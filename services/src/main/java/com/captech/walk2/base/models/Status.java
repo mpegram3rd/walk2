@@ -1,4 +1,4 @@
-package com.captech.walk2.models.base;
+package com.captech.walk2.base.models;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlType;

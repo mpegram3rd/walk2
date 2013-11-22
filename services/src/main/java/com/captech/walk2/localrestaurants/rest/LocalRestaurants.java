@@ -1,10 +1,11 @@
 /**
  * 
  */
-package com.captech.walk2.resources;
+package com.captech.walk2.localrestaurants.rest;
 
 import java.io.IOException;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.DefaultValue;
@@ -16,9 +17,11 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 
+import org.apache.commons.configuration.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.captech.walk2.resources.base.BaseResource;
+import com.captech.walk2.base.BaseResource;
 
 /**
  * @author Macon
@@ -27,6 +30,9 @@ import com.captech.walk2.resources.base.BaseResource;
 @Component
 @Path("/v1/restaurant")
 public class LocalRestaurants extends BaseResource {
+	
+	@Autowired
+	private Configuration config;
 	
 	@GET @Path("/list/{latitude}/{longitude}")
 	@Produces(value={"application/json", "application/xml"})
@@ -37,6 +43,7 @@ public class LocalRestaurants extends BaseResource {
 			@Context HttpServletRequest req, @Context HttpServletResponse resp) throws IOException {
 		
 		System.out.println("Find matches with lat: " + latitude + " and long: " + longitude);
+		
 		
 		return null;
 	}

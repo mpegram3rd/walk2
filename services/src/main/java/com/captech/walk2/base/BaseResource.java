@@ -1,15 +1,17 @@
 /**
  * 
  */
-package com.captech.walk2.resources.base;
+package com.captech.walk2.base;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 
-import com.captech.walk2.models.base.BaseResponse;
-import com.captech.walk2.models.base.GenericStatusResponse;
-import com.captech.walk2.models.base.Status;
+import com.captech.walk2.base.models.BaseResponse;
+import com.captech.walk2.base.models.GenericStatusResponse;
+import com.captech.walk2.base.models.Status;
+import com.captech.walk2.base.models.GenericStatusResponse.Builder;
+
 
 /**
  * @author Macon

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.captech.walk2.models.data;
+package com.captech.walk2.localrestaurants.models;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
