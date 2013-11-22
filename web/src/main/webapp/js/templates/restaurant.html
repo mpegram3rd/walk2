@@ -4,7 +4,7 @@
 			<%= streetAddress %><br/>
 			<%= locality %>, <%= state %> <%= postalCode %>
 		</div>
-		<div class="pull-right"><img src="http://maps.googleapis.com/maps/api/staticmap?size=200x200&zoom=14&sensor=true&markers=color:blue%7C<%= latitude %>,<%= longitude %>" alt="map"></div>
+		<div class="pull-right"><a href="http://maps.google.com/maps?q=<%= name %>&ll=<%= latitude %>,<%= longitude %>&z=13"><img src="http://maps.googleapis.com/maps/api/staticmap?size=200x200&zoom=14&sensor=true&markers=color:blue%7C<%= latitude %>,<%= longitude %>" alt="map"></a></div>
 	</div>
 </div>
 <!-- reviews go here. -->
