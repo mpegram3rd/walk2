@@ -1,3 +1,25 @@
 <div class="row">
 	<div class="col-md-12">There'll be something to see here one day</div>
 </div>
+<div class="row">
+<div class="col-md-12">
+<table class="table">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Distance</th>
+			<th>Rating</th>
+		</tr>
+	</thead>
+<% _.each(obj.models, function(restaurant) { console.log(restaurant); %>
+	<tr>
+		<td><a href="#details/<%= restaurant.attributes.id %>"><%= restaurant.attributes.name %></a></td>
+		<td><%= restaurant.attributes.distance %></td>
+		<td><%= restaurant.attributes.rating %></td>
+	</tr>
+<%}); %>
+</table>
+</div>
+</div>
+
+

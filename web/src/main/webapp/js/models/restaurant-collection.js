@@ -1,7 +1,8 @@
 define([
+        'underscore',
         'backbone',
         'models/restaurant'
-], function (Backbone, Restaurant) {
+], function (_, Backbone, Restaurant) {
 	
 	var Restaurants = Backbone.Collection.extend({
 		initialize: function (models, options) {

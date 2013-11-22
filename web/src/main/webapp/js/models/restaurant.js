@@ -12,7 +12,13 @@ define([
 		
 		url: function () {
 			return '/services/v1/restaurant/' + this.id;
-		}
+		},
+		
+		parse: function (response, options) {
+			if (options.collection) 
+				return response;
+			return response.restaurants[0];
+		},
 		
 	});
 		

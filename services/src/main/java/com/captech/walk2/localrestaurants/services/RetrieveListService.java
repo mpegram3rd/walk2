@@ -40,10 +40,11 @@ public class RetrieveListService {
 				// TODO This is a pretty sketchy way to parse.. need to clean up.
 				for (Map<String, Object> factMap: facts.getData()) {
 					Restaurant restaurant = new Restaurant();
+					restaurant.setId((String)factMap.get("factual_id"));
 					restaurant.setName((String)factMap.get("name"));
 
 					
-					Object distance = factMap.get("distance");
+					Object distance = factMap.get("$distance");
 					if (distance != null)
 						restaurant.setDistance(Double.parseDouble(distance.toString()));
 					

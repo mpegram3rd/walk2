@@ -10,7 +10,8 @@ define([
 		template: _.template(restaurantsTemplate),
 		
 		render: function(eventName) {
-			$(this.el).html(this.template(this.model.toJSON()));
+			
+			$(this.el).html(this.template(this.collection));
 			return this;			
 		}
 	});

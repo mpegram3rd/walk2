@@ -37,15 +37,17 @@ define([
 			var self = this;
 			
 			require(['views/restaurant-list-view', 'models/restaurant-collection'], function(RestaurantsView, Restaurants) {
-				var collection = new Restaurants([], {'latitude'  : position.coords.latitude,
+				var restaurants = new Restaurants([], {'latitude'  : position.coords.latitude,
 					                             'longitude' : position.coords.longitude
 				});
-				collection.fetch();
-				collection.each(function(restaurant) {
-					  console.log("Got 1");
+	
+				var view = new RestaurantsView({collection: restaurants});
+				restaurants.fetch({
+						complete: function ( data, response ) {
+							$('#content').html(view.render().el);
+						}
+
 				});
-//				$('#content').html(view.render().el);
-				console.log("Finished iterating");
 			});
 		},
 		
@@ -63,7 +65,22 @@ define([
 			});			
 		},
 		
-	});	
+		details: function(resourceid) {
+			require(['views/restaurantview', 'models/restaurant'], function(RestaurantView, Restaurant) {
+				var restaurant = new Restaurant({id: resourceid});
+	
+				var view = new RestaurantView({model: restaurant});
+				restaurant.fetch({
+						complete: function ( data, response ) {
+							$('#content').html(view.render().el);
+						}
+
+				});
+			});
+		},
+
+	});
+	
 	
 	var initialize = function() {
 		console.log("Initializing app");

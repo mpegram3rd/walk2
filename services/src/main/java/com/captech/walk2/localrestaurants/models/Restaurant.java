@@ -12,6 +12,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 @XmlAccessorType( XmlAccessType.FIELD )
 public class Restaurant {
 
+	private String id;
 	private String name;
 	private double distance;
 	private double rating;
@@ -33,6 +34,12 @@ public class Restaurant {
 	}
 	public void setRating(double rating) {
 		this.rating = rating;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	
