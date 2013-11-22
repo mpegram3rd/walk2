@@ -1,7 +1,6 @@
 define([
-        'backbone',
-        'geo',
-], function (Backbone, Geo) {
+        'backbone'
+], function (Backbone) {
 	
 	var Location = Backbone.Model.extend({
 		defaults: {
