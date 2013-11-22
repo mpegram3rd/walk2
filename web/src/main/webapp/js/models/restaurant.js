@@ -12,6 +12,8 @@ define([
 			locality: "",
 			state: "",
 			postalCode: "",
+			latitude: 0.0,
+			longitude: 0.0
 		},
 		
 		url: function () {
