@@ -14,7 +14,7 @@ public class Restaurant {
 
 	private String name;
 	private double distance;
-	private int rating;
+	private double rating;
 	
 	public String getName() {
 		return name;
@@ -28,10 +28,10 @@ public class Restaurant {
 	public void setDistance(double distance) {
 		this.distance = distance;
 	}
-	public int getRating() {
+	public double getRating() {
 		return rating;
 	}
-	public void setRating(int rating) {
+	public void setRating(double rating) {
 		this.rating = rating;
 	}
 	

@@ -5,7 +5,6 @@ package com.captech.walk2.localrestaurants.rest;
 
 import java.io.IOException;
 
-import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.DefaultValue;
@@ -22,6 +21,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.captech.walk2.base.BaseResource;
+import com.captech.walk2.localrestaurants.models.LocalRestaurantsResponse;
+import com.captech.walk2.localrestaurants.services.RetrieveListService;
 
 /**
  * @author Macon
@@ -34,18 +35,22 @@ public class LocalRestaurants extends BaseResource {
 	@Autowired
 	private Configuration config;
 	
+	@Autowired
+	private RetrieveListService retrieveListSvc;
+	
+	
 	@GET @Path("/list/{latitude}/{longitude}")
 	@Produces(value={"application/json", "application/xml"})
 	public Response find(
 			@QueryParam(value="type") @DefaultValue(BaseResource.JSON_TYPE) String type,
-			@PathParam("latitude") String latitude,
-			@PathParam("longitude") String longitude,
+			@PathParam("latitude") double latitude,
+			@PathParam("longitude") double longitude,
 			@Context HttpServletRequest req, @Context HttpServletResponse resp) throws IOException {
 		
 		System.out.println("Find matches with lat: " + latitude + " and long: " + longitude);
+		LocalRestaurantsResponse  response = retrieveListSvc.find(latitude, longitude, 1600); // set radius to a mile for now. 
 		
-		
-		return null;
+		return createInitialResponseBuilder(response, type).build();
 	}
 	
 	@GET @Path("/{id}")

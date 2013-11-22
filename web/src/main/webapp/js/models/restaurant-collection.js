@@ -13,7 +13,11 @@ define([
 		
 		url: function () {
 			return '/services/v1/restaurant/list/' + this.latitude + '/' + this.longitude;
-		}
+		},
+		
+		parse: function (response) {
+			return response.restaurants;
+		},
 		
 	});
 		

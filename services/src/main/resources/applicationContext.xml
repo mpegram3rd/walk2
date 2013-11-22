@@ -18,5 +18,5 @@
     
     <bean id="configuration" class="org.apache.commons.configuration.Configuration" 
           factory-bean="configurationFactory" factory-method="getConfig" />
-          
+
 </beans>
