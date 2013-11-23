@@ -16,6 +16,15 @@ import com.sun.jersey.api.client.WebResource;
 @Component
 public class TomatoeSource {
 
+	// Cheap ploy until proper caching behavior can be added to avoid exceeding the API allowables.
+	private final String [] QUOTE_CHEATS = new String[] {
+			"Alternately affecting, hilarious and heartbreaking and the most original prison food ever made",
+			"It's sadder and scarier than its predecessors, but it also may be the most important food you'll ever eat.",
+			"The best taste of the style so far.",
+			"It hits every button from laughter to tears and lifts you up on waves of flavorful dazzlement. And you don't need to take a kid along to appreciate it",
+			"It's not be a masterpiece, but it still had me in tears at the end."			
+	};
+	
 	@Autowired
 	private Configuration config;
 	
@@ -38,7 +47,7 @@ public class TomatoeSource {
 		String result = "I laughed, I cried it became a part of me!";
 		List<String> quotes = rawReviews(id);
 		if (quotes != null && quotes.size() > 0) {
-			result = quotes.get((int)(Math.random() * quotes.size()));
+			result = QUOTE_CHEATS[(int)(Math.random() * QUOTE_CHEATS.length)];
 		}
 		return result;
 	}

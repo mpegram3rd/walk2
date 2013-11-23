@@ -33,7 +33,7 @@ public class RetrieveDetailService {
 		Celebrity celeb = tomatoeSource.getCeleb();
 		String reviewText = tomatoeSource.createReview(celeb.getMovieId());
 		Review review = new Review();
-		review.setReviewer(celeb.getName() + " (" + celeb.getMovieTitle() +")");
+		review.setReviewer(celeb.getName()); // + " (" + celeb.getMovieTitle() +")");
 		review.setComment(reviewText);
 		detail.getReviews().add(review);
 		
